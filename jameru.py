@@ -46,6 +46,12 @@ def parseCommand():
         return 'None'
  
     return query
+
+def open_edge_and_search(query):
+    try:
+        webbrowser.get('edge').open_new(query)
+    except Exception as e:
+        print(f"An error occurred while opening Microsoft Edge: {e}")
  
 def search_wikipedia(query = ''):
     searchResults = wikipedia.search(query)
@@ -120,9 +126,9 @@ if __name__ == '__main__':
  
             # Navigation
             if query[0] == 'go' and query[1] == 'to':
-                speak('Opening...Please wait...')
+                speak('Opening... Please wait...')
                 query = ' '.join(query[2:])
-                webbrowser.get('edge').open_new(query)
+                open_edge_and_search(query)
  
             # Wikipedia 
             if query[0] == 'search':
